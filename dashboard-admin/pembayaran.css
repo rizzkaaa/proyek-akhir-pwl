@@ -1,0 +1,136 @@
+section#pembayaran{
+    position: relative;
+}
+section#pembayaran td{
+    text-align: center;
+}
+section#pembayaran td:nth-child(2),
+section#dari-murid td:nth-child(2){
+    text-align: start;
+}
+section#pembayaran td:nth-child(6),
+section#dari-murid td:nth-child(6){
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+.input-bukti{
+    position: absolute;
+    top: 10px;
+    width: 103px;
+    height: 103px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: rgba(167, 152, 152, 0.479);
+}
+.input-bukti-disabled{
+    z-index: -99;
+    position: absolute;
+    top: 10px;
+    width: 103px;
+    height: 103px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: rgba(167, 152, 152, 0.479);
+}
+.temp-hide{
+    opacity: 0;
+    transition: all 0.5s;
+
+}
+section#pembayaran td:nth-child(6) .input-bukti:hover,
+section#dari-murid td:nth-child(6) .input-bukti:hover{
+    opacity: 1;
+    transition: all 0.5s;
+}
+.status-gaji{
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+}
+.selesai{
+    background-color: rgb(92, 241, 47);
+}
+
+.proses{
+    background-color: red;
+}
+.input-file{
+    background-color: rgba(128, 128, 128, 0.301);
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.wrap-input-file{
+    margin: auto;
+    width: 600px;
+    height: 300px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 5px grey;
+}
+.wrap-input-file h1{
+    padding: 10px 20px;
+    border-radius: 20px 20px 0 0;
+    background-color: yellow;
+}
+.wrap-input-file div{
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
+    width: 554px;
+    height: 199px;
+    background-color: rgb(255, 251, 251);
+    border: 3px dashed grey;
+    cursor: pointer;
+
+}
+.wrap-input-file div:hover{
+    background-color: rgb(238, 228, 228);
+}
+.wrap-input-file span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+
+}
+.wrap-input-file span p:last-child{
+    font-size: 12px;
+}
+.wrap-input-file input[type='file']{
+    cursor: pointer;
+    transform: scale(10) translateX(90px) translateY(9px);
+    background-color: grey;
+    opacity: 0;
+}
+.status-gaji.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+form .wrap{
+    display: flex;
+    align-items: center;
+}
+form .wrap .input{
+    padding: 5px;
+    border: 0.5px solid rgb(255, 166, 0);
+    border-radius: 5px;
+    margin-inline: 5px;
+}

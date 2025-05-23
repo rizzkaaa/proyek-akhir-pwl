@@ -1,0 +1,107 @@
+section:target{
+    display: flex;
+}
+section {
+    margin: auto;
+    padding: 40px;
+    width: 75%;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 3px grey;
+    background-color: white;
+  }
+  form.filter{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  form select{
+    border: 1px solid rgb(255, 136, 0);
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  form select:focus, input:focus{
+    outline: none;
+  }
+  form .cari input{
+    padding: 3px 5px;
+    border: none;
+    font-size: 15px;
+  
+  }
+  form .cari {
+    display: flex;
+  }
+  form .cari input:first-child{
+    border: 1px solid rgb(255, 136, 0);
+    border-radius: 5px 0 0 5px;
+  }
+  form .cari input:last-child{
+    background-color: rgb(255, 136, 0);
+    border-radius: 0 5px 5px 0;
+    font-weight: bold;
+    color: rgb(238, 238, 238);
+    cursor: pointer;
+  }
+  form .cari input:last-child:hover{
+    background-color: rgb(255, 187, 0);
+  
+  }
+  
+  table {
+    border-spacing: 0;
+    width: 90%;
+    margin-top: 40px;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+  }
+  
+  td:nth-child(1), 
+  section#jadwal td:nth-child(2), 
+  td:nth-child(3),
+  section#data-users td:nth-child(4),
+  section#data-users td:nth-child(5){
+    text-align: center;
+
+  }
+  th{
+    border-bottom: 3px double rgb(255, 136, 0);
+    background-color: rgba(255, 251, 0, 0.493);
+  }
+  td{
+    border-bottom: 1px solid rgb(255, 136, 0);
+  }
+  
+  section#jadwal td:last-child,
+  section#data-users td:last-child{
+    display: flex;
+    justify-content: center;
+  }
+  .button-aksi, .button-resmi{
+    color: white;
+    text-decoration: none;
+    background-color: rgb(255, 136, 0);
+    padding: 5px 8px;
+    font-weight: bold;
+  }
+  .button-resmi{
+    border-radius: 10px;
+  }
+  .button-aksi:hover, .button-resmi:hover{
+    background-color: rgb(255, 183, 100);
+  }
+  td .button-aksi:first-child{
+    border-radius: 10px 0 0 10px ;
+    
+  }
+  td .button-aksi:last-child{
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+  }

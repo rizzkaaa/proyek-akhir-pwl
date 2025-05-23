@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Tuffy", sans-serif;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: url(../asset/bg-form.png);
+    background-size: 100%;
+}
+header{
+    display: flex;
+    align-items: center;
+}
+header h1{
+    font-family: "Bona Nova SC", serif;
+    font-size: 45px;
+    color: rgb(58, 58, 58);
+    text-align: center;
+    display: inline-block;
+}
+
+header img{
+    width: 350px;
+}
+
+form{
+    background-color: rgb(255, 255, 255);
+    width: 70%;
+    border: 1px solid yellow;
+    border-radius: 20px;
+    padding: 50px;
+}
+form .head-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+form .head-form h3{
+    font-size: 30px;
+    text-decoration: underline;
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo a:hover img{
+    filter: drop-shadow(0 0 3px rgba(138, 138, 134, 0.541));
+}
+.logo .judul{
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(253, 208, 9);
+    text-shadow: 20px 16px 3px #302e2e5e;
+    font-family: "Bona Nova SC", serif;
+}
+
+form .body-form{
+    margin: 20px 60px;
+}
+form .wrap{
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 20px 10px;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+form .wrap label{
+    font-size: 17px;
+}
+form .wrap .input{
+    padding: 5px;
+    width: 500px;
+    border: 0.5px solid rgb(255, 166, 0);
+    border-radius: 5px;
+    font-size: 17px;
+}
+form .wrap select{
+    width: 510px !important;
+}
+form .wrap input[name='kelas']{
+    padding: 5px;
+    font-size: 17px;
+    width: 395px;
+    height: 20px;
+    border: 0.5px solid rgb(255, 166, 0);
+    border-radius: 5px;
+}
+form .wrap .custom-input{
+    display: flex;
+    align-items: center;
+}
+form .custom-wrap{
+    margin: 5px 7px;
+    padding: 0 20px;
+}
+form .wrap textarea{
+    resize: none;
+}
+form .wrap input[name='kelas']:focus, form .wrap .input:focus{
+    outline: none;
+}
+form .wrap input[name='kelas']:focus, 
+form .wrap .input:focus, 
+form .wrap input[name='kelas']:valid,
+form .wrap .input:valid{
+    border: none;
+     border-bottom: 0.5px solid rgb(255, 166, 0);
+     border-radius: 0;
+ }
+
+form .custom-wrap input{
+    accent-color: rgb(192, 84, 12);
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+button {
+    padding: 10px 20px;
+    margin: 20px;
+    border-radius: 50px;
+    border: 2px solid  rgb(253, 208, 9);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(247, 245, 243, 0.308);
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: 0.3s;
+    z-index: 1;
+    font-weight: bold;
+    color: rgb(39, 37, 37);
+    transition: all 1s;
+    cursor: pointer;
+}
+button::before {
+    content: '';
+    width: 105%;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: rgb(253, 208, 9);
+    transition: 0.8s ease;
+    display: block;
+    z-index: -1;
+}
+
+button:hover::before {
+    width: 0;
+}
+button:active{
+    background-color: rgb(253, 208, 9);
+}

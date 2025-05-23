@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./package/swiper-bundle.css" />
+    <link rel="stylesheet" href="./package/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./package/swiper.css" />
+    <link rel="stylesheet" href="./package/swiper.min.css" />
+
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        ...
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+    <script>
+      const swiper = new Swiper(".swiper", {
+        autoplay: {
+          delay: 5000,
+        },
+      });
+
+      // const swiper = document.querySelector('.swiper').swiper;
+
+      // Now you can use all slider methods like
+      swiper.slideNext();
+    </script>
+  </body>
+</html>

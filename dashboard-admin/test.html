@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>#drop-zone {
+        border: 2px dashed #aaa;
+        border-radius: 10px;
+        padding: 40px;
+        text-align: center;
+        cursor: pointer;
+        color: #666;
+        transition: background-color 0.2s ease;
+      }
+      
+      #drop-zone.dragover {
+        background-color: #f0f8ff;
+      }
+      
+
+    </style>
+</head>
+<body>
+  <input type="hidden" name="id_pembayaran" id="id_pembayaran">
+    <div id="drop-zone">
+        <p>Seret dan lepas file di sini, atau klik untuk memilih</p>
+        <input type="file" id="file-input" hidden />
+      </div>
+      
+      <script>
+        const dropZone = document.getElementById("drop-zone");
+const fileInput = document.getElementById("file-input");
+
+dropZone.addEventListener("click", () => fileInput.click());
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("dragover");
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("dragover");
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("dragover");
+
+  const files = e.dataTransfer.files;
+  handleFiles(files);
+});
+
+fileInput.addEventListener("change", () => {
+  handleFiles(fileInput.files);
+});
+
+function handleFiles(files) {
+  // Lakukan apa yang kamu mau dengan file
+  console.log("File yang diupload:", files);
+  alert(`File diterima: ${files[0].name}`);
+}
+
+      </script>
+</body>
+</html>

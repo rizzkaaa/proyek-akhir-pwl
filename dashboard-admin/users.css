@@ -1,0 +1,29 @@
+section#data-admin .filter, 
+section#data-pengajar .filter{
+    justify-content: end;
+}
+section#data-admin td:nth-child(2), 
+section#data-pengajar td:nth-child(2),
+section#dari-pendaftar td:nth-child(2){
+    text-align: center;
+}
+section table img{
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgb(223, 223, 223);
+    border-radius: 10px;
+}
+section#data-admin table, section#data-pengajar table{
+    position: relative;
+}
+.toggle-more-info:hover .more-info{
+    display: table-row;
+}
+
+.more-info{
+    display: none;
+
+}
+.more-info th{
+    border-bottom: 1px solid rgb(255, 136, 0);
+}
