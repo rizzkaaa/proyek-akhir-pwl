@@ -2,6 +2,8 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 include '../db.php';
+include './updateBulanan.php';
+updateData($connect);
 session_start();
 
 if (isset($_SESSION['peran']) && isset($_SESSION['id_key'])) {
@@ -15,11 +17,6 @@ if (isset($_SESSION['peran']) && isset($_SESSION['id_key'])) {
 
 $tabelAdmin = mysqli_query($connect, "SELECT * FROM admin WHERE id_key=$id");
 $profilAdmin = mysqli_fetch_assoc($tabelAdmin);
-
-$dataBulanTahun = mysqli_query($connect, 'SELECT * FROM dataBulanTahun');
-$status = mysqli_fetch_assoc($dataBulanTahun);
-$bulanBerjalan = $status['bulan'];
-$tahunBerjalan = $status['tahun'];
 
 $bulan = [
     "Januari",
@@ -37,38 +34,6 @@ $bulan = [
 ];
 $tahun = range(2015, 2025);
 
-$bulanBaru = $bulan[(date("m")) - 1];
-$tahunBaru = date("Y");
-
-if ($bulanBerjalan != $bulanBaru || $tahunBerjalan != $tahunBaru) {
-    $dataGajiPengajar = mysqli_query($connect, "SELECT * FROM pengajar");
-    $dataTerimaMurid = mysqli_query($connect, "SELECT * FROM murid");
-
-    while ($row = mysqli_fetch_assoc($dataGajiPengajar)) {
-        $id_pengajar = $row['id_pengajar'];
-        $dataGaji = mysqli_query($connect, "INSERT INTO pembayaran_gaji (id_pengajar, bulan, tahun, jumlah_pembayaran, status) VALUES ($id_pengajar, '$bulanBaru', $tahunBaru, 0, 'Proses')");
-    }
-
-    $jamKerja = mysqli_query($connect, 'SELECT id_pengajar, COUNT(*) AS jumlah FROM jadwal GROUP BY id_pengajar;');
-    while ($rowPengajar = mysqli_fetch_assoc($jamKerja)) {
-        $totalGaji = $rowPengajar['jumlah'] * 150000;
-        $id_pengajar = $rowPengajar['id_pengajar'];
-        $updateGaji = mysqli_query($connect, "UPDATE pembayaran_gaji SET jumlah_pembayaran=$totalGaji WHERE id_pengajar=$id_pengajar AND bulan = '$bulanBaru' AND tahun = $tahunBaru");
-    }
-
-    while ($row = mysqli_fetch_assoc($dataTerimaMurid)) {
-        $id_murid = $row['id_murid'];
-        $dataTerima = mysqli_query($connect, "INSERT INTO penerimaan_murid (id_murid, bulan, tahun, jumlah_penerimaan, status) VALUES ($id_murid, '$bulanBaru', $tahunBaru, 0, 'Proses')");
-    }
-
-    $hargaPaket = mysqli_query($connect, "SELECT a.id_murid, b.harga FROM `murid` a INNER JOIN paket_belajar b ON a.id_paket=b.id_paket");
-    while ($rowMurid = mysqli_fetch_assoc($hargaPaket)) {
-        $harga = $rowMurid['harga'];
-        $id_murid = $rowMurid['id_murid'];
-        $updateTerima = mysqli_query($connect, "UPDATE penerimaan_murid SET jumlah_penerimaan=$harga WHERE id_murid=$id_murid AND bulan = '$bulanBaru' AND tahun = $tahunBaru");
-    }
-    mysqli_query($connect, "UPDATE dataBulanTahun SET bulan = '$bulanBaru', tahun = $tahunBaru");
-}
 
 ?>
 
@@ -180,7 +145,11 @@ if ($bulanBerjalan != $bulanBaru || $tahunBerjalan != $tahunBaru) {
                     'Saturday' => 'Sabtu'
                 ];
 
-                $hariIni = $translate[$today];
+                if (isset($_GET['hari'])) {
+                    $hariIni = $_GET['hari'];
+                } else {
+                    $hariIni = $translate[$today];
+                }
                 ?>
 
                 <select name="hari" id="hari" onchange="document.getElementById('filterJadwal').submit();">
@@ -188,14 +157,15 @@ if ($bulanBerjalan != $bulanBaru || $tahunBerjalan != $tahunBaru) {
                     <?php
                     foreach ($translate as $key => $value) {
                         ?>
-                    <option value="<?= $value ?>" <?= isset($_GET['hari']) && $_GET['hari'] == $value || $hariIni == $value ? 'selected' : '' ?>><?= $value ?></option>
+                        <option value="<?= $value ?>" <?= $hariIni == $value ? 'selected' : '' ?>><?= $value ?></option>
                     <?php } ?>
 
                 </select>
             </div>
             <div class="cari">
                 <input type="search" name="cariJadwal"
-                    value="<?= isset($_GET['cariJadwal']) ? $_GET['cariJadwal'] : '' ?>" placeholder="Cari ruangan, nama kelas, mata pelajarn dan nama pengajar">
+                    value="<?= isset($_GET['cariJadwal']) ? $_GET['cariJadwal'] : '' ?>"
+                    placeholder="Cari ruangan, nama kelas, mata pelajarn dan nama pengajar">
                 <input type="submit" value="Cari">
             </div>
         </form>
@@ -266,12 +236,14 @@ if ($bulanBerjalan != $bulanBaru || $tahunBerjalan != $tahunBaru) {
                     </option>
                     <option value="Pengajar" <?= isset($_GET['peran']) && $_GET['peran'] == 'Pengajar' ? 'selected' : '' ?>>Pengajar
                     </option>
-                    <option value="Murid" <?= isset($_GET['peran']) && $_GET['peran'] == 'Murid' ? 'selected' : '' ?>>Murid</option>
+                    <option value="Murid" <?= isset($_GET['peran']) && $_GET['peran'] == 'Murid' ? 'selected' : '' ?>>Murid
+                    </option>
                 </select>
             </div>
             <div class="cari">
                 <input type="search" name="cariDataUsers"
-                    value="<?= isset($_GET['cariDataUsers']) ? $_GET['cariDataUsers'] : '' ?>" placeholder="Cari nama user dan username">
+                    value="<?= isset($_GET['cariDataUsers']) ? $_GET['cariDataUsers'] : '' ?>"
+                    placeholder="Cari nama user dan username">
                 <input type="submit" value="Cari">
             </div>
         </form>
@@ -541,7 +513,8 @@ if ($bulanBerjalan != $bulanBaru || $tahunBerjalan != $tahunBaru) {
         <form class="menu filter" id="filterDataPengajar" method="GET">
             <div class="cari">
                 <input type="search" name="cariDataPengajar"
-                    value="<?= isset($_GET['cariDataPengajar']) ? $_GET['cariDataPengajar'] : '' ?>" placeholder="Cari pengajar">
+                    value="<?= isset($_GET['cariDataPengajar']) ? $_GET['cariDataPengajar'] : '' ?>"
+                    placeholder="Cari pengajar">
                 <input type="submit" value="Cari">
             </div>
         </form>
@@ -681,7 +654,7 @@ if ($bulanBerjalan != $bulanBaru || $tahunBerjalan != $tahunBaru) {
 
             <div class="cari">
                 <input type="search" name="cariDataBayar"
-                    value="<?= isset($_GET['cariDataBayar']) ? $_GET['cariDataBayar'] : '' ?>">
+                    value="<?= isset($_GET['cariDataBayar']) ? $_GET['cariDataBayar'] : '' ?>" placeholder="Cari...">
                 <input type="submit" value="Cari">
             </div>
         </form>
@@ -763,7 +736,7 @@ if ($bulanBerjalan != $bulanBaru || $tahunBerjalan != $tahunBaru) {
                 ?>
 
                 <label>Tanggal:</label>
-                <span class="input"><?= $tanggalHariIni?></span>
+                <span class="input"><?= $tanggalHariIni ?></span>
             </div>
             <div class="cari">
                 <input type="search" name="cariIDPendaftar"
@@ -797,10 +770,10 @@ if ($bulanBerjalan != $bulanBaru || $tahunBerjalan != $tahunBaru) {
             $tabelPendaftar = mysqli_query($connect, $query);
             $no = 1;
             while ($dataPendaftar = mysqli_fetch_assoc($tabelPendaftar)) {
-            if($dataPendaftar['tgl_exp'] <= $tanggalHariIni){
-                $exp = $dataPendaftar['tgl_exp'];
-                mysqli_query($connect, "DELETE FROM data_pendaftar WHERE tgl_exp = '$exp'");
-            }
+                if ($dataPendaftar['tgl_exp'] <= $tanggalHariIni) {
+                    $exp = $dataPendaftar['tgl_exp'];
+                    mysqli_query($connect, "DELETE FROM data_pendaftar WHERE tgl_exp = '$exp'");
+                }
                 ?>
                 <tbody class="toggle-more-info">
                     <tr class="main-info">

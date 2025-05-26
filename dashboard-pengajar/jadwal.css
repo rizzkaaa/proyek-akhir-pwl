@@ -1,0 +1,75 @@
+section:target {
+}
+section {
+  display: flex;
+  margin: auto;
+  padding: 40px;
+  width: 75%;
+  border-radius: 10px;
+  /* display: none; */
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 3px grey;
+  background-color: white;
+}
+form.filter {
+  display: flex;
+  align-items: center;
+}
+
+form select {
+  border: 1px solid rgb(255, 136, 0);
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+form select:focus,
+input:focus {
+  outline: none;
+}
+
+section#jadwal form.filter {
+  justify-content: end;
+}
+form .cari input {
+  padding: 3px 5px;
+  border: none;
+  font-size: 15px;
+}
+form .cari {
+  display: flex;
+}
+form .cari input:first-child {
+  border: 1px solid rgb(255, 136, 0);
+  border-radius: 5px 0 0 5px;
+}
+form .cari input:last-child {
+  background-color: rgb(255, 136, 0);
+  border-radius: 0 5px 5px 0;
+  font-weight: bold;
+  color: rgb(238, 238, 238);
+  cursor: pointer;
+}
+form .cari input:last-child:hover {
+  background-color: rgb(255, 187, 0);
+}
+
+section#jadwal table {
+  border-spacing: 0;
+  width: 90%;
+  margin-top: 40px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  border-bottom: 3px double rgb(255, 136, 0);
+  background-color: rgba(255, 251, 0, 0.493);
+}
+td {
+  border-bottom: 1px solid rgb(255, 136, 0);
+}

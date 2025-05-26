@@ -1,0 +1,42 @@
+
+section#kelas .head-kelas {
+    background-color: yellow;
+  width: 98%;
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  box-shadow: 0 0 3px rgb(194, 191, 191);
+  border-radius: 20px 20px 0 0;
+}
+section#kelas .head-kelas label {
+  font-size: 15px;
+  color: rgb(139, 139, 139);
+}
+section#kelas .nav {
+    display: flex;
+    width: 98%;
+    border-bottom: 4px double rgb(141, 135, 135);
+}
+section#kelas .nav div {
+  padding: 5px;
+  /* background-color: rgb(243, 243, 243); */
+  flex: 1;
+  /* color: white; */
+  text-align: center;
+}
+
+section#kelas .konten{
+    width: 96%;
+    padding: 10px;
+}
+section#kelas .nilai{
+    width: 100%;
+}
+section#kelas form.filter{
+  justify-content: space-between;
+}
+section#kelas table {
+  border-spacing: 0;
+  width: 100%;
+  margin-top: 40px;
+}
