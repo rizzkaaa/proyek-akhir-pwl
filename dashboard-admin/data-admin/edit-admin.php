@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $no_telp = mysqli_real_escape_string($connect, $_POST['no_telp']);
         $posisi = mysqli_real_escape_string($connect, $_POST['posisi']);
         
-        $query = "UPDATE admin SET nama_admin='$nama_admin', umur=$umur, alamat='$alamat', no_telp=<span onclick="confirm('Yakin mau menghapus?') , posisi='$posisi' WHERE id_admin=$id_admin";
+        $query = "UPDATE admin SET nama_admin='$nama_admin', umur=$umur, alamat='$alamat', no_telp='$no_telp' , posisi='$posisi' WHERE id_admin=$id_admin";
         
         if(isset($_POST["id_key"]) && !empty($_POST['id_key'])){
             $id_key = mysqli_real_escape_string($connect, $_POST['id_key']);

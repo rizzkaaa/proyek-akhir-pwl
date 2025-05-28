@@ -1,6 +1,5 @@
-
 section#kelas .head-kelas {
-    background-color: yellow;
+  background-color: yellow;
   width: 98%;
   display: flex;
   justify-content: space-around;
@@ -12,31 +11,31 @@ section#kelas .head-kelas label {
   font-size: 15px;
   color: rgb(139, 139, 139);
 }
-section#kelas .nav {
-    display: flex;
-    width: 98%;
-    border-bottom: 4px double rgb(141, 135, 135);
+section#kelas .nilai {
+  padding: 30px;
+  width: 96%;
 }
-section#kelas .nav div {
-  padding: 5px;
-  /* background-color: rgb(243, 243, 243); */
-  flex: 1;
-  /* color: white; */
-  text-align: center;
-}
-
-section#kelas .konten{
-    width: 96%;
-    padding: 10px;
-}
-section#kelas .nilai{
-    width: 100%;
-}
-section#kelas form.filter{
+section#kelas form.filter {
   justify-content: space-between;
 }
 section#kelas table {
   border-spacing: 0;
   width: 100%;
   margin-top: 40px;
+}
+
+.toggle-more-info:hover .more-info {
+  display: table-row;
+}
+
+.more-info {
+  display: none;
+}
+.more-info th {
+  border-bottom: 1px solid rgb(255, 136, 0);
+}
+
+section#kelas .main-info td:nth-child(3),
+section#kelas .more-info td:nth-child(2) {
+  text-align: start;
 }

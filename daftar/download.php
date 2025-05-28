@@ -55,9 +55,6 @@ $html = "
             text-shadow: 20px 16px 3px #302e2e5e;
             font-family: 'Times New Roman', Times, serif;
         }
-
-
-
         .body-form {
             margin: 20px;
         }

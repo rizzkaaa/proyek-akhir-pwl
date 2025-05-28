@@ -67,8 +67,8 @@ function updateData($connect)
             $id_murid = $rowMurid['id_murid'];
             $id_mapel = $rowJadwal['id_mapel'];
 
-            mysqli_query($connect, "INSERT INTO nilai (id_murid, id_mapel, bulan, tahun) 
-                VALUES ($id_murid, '$id_mapel', '$bulanBaru', '$tahunBaru')");
+            mysqli_query($connect, "INSERT INTO nilai (id_murid, id_mapel, bulan, tahun, latihan, tugas, quiz, ulangan, total_nilai, grade) 
+                VALUES ($id_murid, '$id_mapel', '$bulanBaru', '$tahunBaru', 0, 0, 0, 0, 0, 'D')");
 
         }
     }

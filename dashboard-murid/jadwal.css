@@ -13,6 +13,7 @@ section {
   background-color: white;
 }
 form.filter {
+  width: 90%;
   display: flex;
   align-items: center;
 }
@@ -30,6 +31,9 @@ input:focus {
 
 section#jadwal form.filter {
   justify-content: end;
+}
+section#nilai form.filter {
+  justify-content: space-between;
 }
 form .cari input {
   padding: 3px 5px;
@@ -53,8 +57,7 @@ form .cari input:last-child {
 form .cari input:last-child:hover {
   background-color: rgb(255, 187, 0);
 }
-
-section#jadwal table {
+table {
   border-spacing: 0;
   width: 90%;
   margin-top: 40px;
@@ -92,3 +95,19 @@ td {
     cursor: pointer;
     border-radius: 0 10px 10px 0;
   }
+
+
+.toggle-more-info:hover .more-info {
+  display: table-row;
+}
+
+.more-info {
+  display: none;
+}
+.more-info th {
+  border-bottom: 1px solid rgb(255, 136, 0);
+}
+
+section#nilai .main-info td:nth-child(4){
+  text-align: start;
+}

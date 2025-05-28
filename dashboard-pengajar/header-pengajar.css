@@ -156,14 +156,14 @@ header .menu p{
   color: black;
 }
 
-.datas:target{
+#kelasPilih:target{
   transform: translateY(0);
   position: relative;
   transition: all 1s;
   z-index: 1;
   opacity: 1;
 }
-.datas{
+#kelasPilih{
   transform: translateY(-200px);
     z-index: -2;
     position: relative;
@@ -172,10 +172,13 @@ header .menu p{
 
 }
 
-.datas .menu{
+#kelasPilih .menu{
   padding: 10px 15px !important;
   font-size: 17px;
 }
-.datas .menu i{
+#kelasPilih .menu i{
   font-size: 17px;
+}
+input[type='radio']{
+  display: none;
 }

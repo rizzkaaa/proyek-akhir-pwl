@@ -65,7 +65,7 @@ $tahun = range(2015, 2025);
             <div class="menu side">
                 <img class="img-profil" src="../asset/admin/<?= $profilAdmin['profil'] ?>" alt="">
                 <h3><?= $profilAdmin['nama_admin'] ?></h3>
-                <p><?= $profilAdmin['posisi'] ?> <br> +62 <?= $profilAdmin['no_telp'] ?></p>
+                <p><?= $profilAdmin['posisi'] ?> - <?= $profilAdmin['id_admin'] ?></p>
                 <button onclick="alertConfirm()">Keluar</button>
             </div>
             <div class="side <?= $profilAdmin['posisi'] == 'Admin Keuangan' ? 'notShow' : '' ?> ">
